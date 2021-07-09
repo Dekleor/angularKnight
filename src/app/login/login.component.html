@@ -1,0 +1,26 @@
+<div class="container">
+  <div>
+    <h2 class="text-center"></h2>
+    <br>
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+      <div class="log">
+        <div class="row">
+          <div class="my-3 p-3">
+            <label for="formUsername">Nom d'utilisateur : </label>
+            <input type="text" formControlName="username" id="formUsername" placeholder="Nom d'utilisateur">
+          </div>
+        </div>
+        <div class="row justify-content-center pt-4">
+          <div class=" mt-4">
+            <label for="formPassword">Mot de passe : </label>
+            <input type="text" formControlName="password" id="formPassword" placeholder="Mot de passe">
+          </div>
+        </div>
+      </div>
+      <div class="row pt-5">
+        <input class="form-control btn btn-success" type="submit" value="Se connecter" style="border-radius: 30px; ">
+      </div>
+    </form>
+  </div>
+</div>
+

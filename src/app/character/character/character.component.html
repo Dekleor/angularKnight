@@ -1,0 +1,19 @@
+<div class="card text-white bg-light" style="width: 18rem;">
+    <img class="card-img-top" src="{{ character.portrait }}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{ character.name}}</h5>
+      <p class="card-text">Membre de la division {{ character.division }} et porteur d'une armure {{ character.armor }}</p>
+      <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Connaitre son histoire.
+      </button>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <div class="">
+            <p class="card-text coatOfArms.">{{character.coatOfArms}}</p>
+            <p class="card-text">{{character.background}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

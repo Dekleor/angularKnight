@@ -1,0 +1,35 @@
+<h3>Ajouter un vol</h3>
+<ul *ngIf="submitted">
+  <li *ngIf="newCharacter.controls['name']?.errors?.required">Vous connaissez bien le nom de votre personnage ?</li>
+  <li *ngIf="newCharacter.controls['background']?.errors?.required">Vous avez bien quelques mots à nous dire sur votre personnage !</li>
+  <li *ngIf="newCharacter.controls['armor']?.errors?.required">Comment ça, "je ne sais pas quelle armure il porte" ?</li>
+</ul>
+
+<form [formGroup]="newCharacter" (ngSubmit)="submitForm()">
+  <label>ID</label>
+  <div class="form-group row">
+    <label for="formName">Nom du personnage :</label>
+    <input type="text" formControlName="name" id="formName">
+  </div>
+  <div class="form-group row">
+    <label for="formBackground">son histoire :</label>
+    <textarea type="text" formControlName="departureDate" id="formBackground"></textarea>
+  </div>
+  <div>
+    <label for="formDivision">Sa section :</label>
+    <input type="time" formControlName="division" id="formDivision">
+  </div>
+  <div>
+    <label for="formArmor">Quelle armure porte il ? </label>
+    <input type="text" formControlName="armor" id="formArmor">
+  </div>
+  <div>
+    <label for="formCoatOfArms">Son blason :</label>
+    <input type="text" formControlName="coatOfArms" id="formCoatOfArms">
+  </div>
+  <div>
+    <label for="formPortrait">son portrait :</label>
+    <input type="text" formControlName="portrait" id="formPortrait">
+  </div>
+
+</form>

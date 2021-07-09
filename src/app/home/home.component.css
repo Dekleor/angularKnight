@@ -1,0 +1,11 @@
+.bg-top {
+  background-image: url(../../assets/backgroundTop.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 175px;
+}
+
+.menuPosition {
+  position: relative;
+  bottom: 0;
+}

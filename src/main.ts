@@ -10,3 +10,7 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+
+export class Main {
+  public static TOKEN_KEY = 'auth-token';
+}

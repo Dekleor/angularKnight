@@ -1,0 +1,20 @@
+<div class="bg-dark text-white container">
+  <h3>S'enregistrer</h3>
+  <ul *ngIf="submitted">
+    <li *ngIf="newUser.controls['username']?.errors?.required">Choisissez un nom d'utilisateur</li>
+    <li *ngIf="newUser.controls['password']?.errors?.required">Choisissez un mot de passe</li>
+  </ul>
+
+  <form [formGroup]="newUser" (ngSubmit)="submitForm()">
+    <div class="form-group row">
+      <label for="formUsername">Nom d'utilisateur : </label>
+      <input type="text" formControlName="username" id="formUsername" placeholder="Nom d'utilisateur">
+    </div>
+    <div class="form-group row">
+      <label for="formPassword">Mot de passe : </label>
+      <input type="text" formControlName="password" id="formPassword" placeholder="Mot de passe">
+    </div>
+
+    <button type="submit">S'inscrire</button>
+  </form>
+</div>
