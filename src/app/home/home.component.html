@@ -1,54 +1,43 @@
-<ul ngbNav #nav="ngbNav" class="bg-top nav-tabs navbar-dark bg-dark">
-  <li ngbNavItem>
-    <a ngbNavLink class="navbar-dark bg-dark text-light ">Accueil</a>
-    <ng-template ngbNavContent>
-      <app-accueil></app-accueil>
-    </ng-template>
-  </li>
-  <li ngbNavItem>
-    <a ngbNavLink class="navbar-dark bg-dark text-light">Personnages</a>
-    <ng-template ngbNavContent>
-      <app-list></app-list>
-    </ng-template>
-  </li>
-  <li ngbNavItem>
-    <a ngbNavLink class="navbar-dark bg-dark text-light">PnJ</a>
-    <ng-template ngbNavContent>
-      <h2>Coming Soon</h2>
-    </ng-template>
-  </li>
-  <div *ngIf="isAdmin; then adminBlock else otherBlock"></div>
-  <ng-template #adminBlock>
-    <li ngbNavItem>
-      <a ngbNavLink class="navbar-dark bg-dark text-light">Administration</a>
-      <ng-template ngbNavContent>
-        <app-delete></app-delete>
-        <app-stats></app-stats>
-      </ng-template>
+<section class="bg-top">
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link text-light" [routerLink]="['/home']">Home</a>
     </li>
-  </ng-template>
-  <ng-template #otherBlock>
-    <div *ngIf="isUser; then userBlock else loginBlock"></div>
-    <ng-template #userBlock>
-      <!--      <li ngbNavItem>-->
-      <!--        <a ngbNavLink class="navbar-dark bg-dark text-light">Administration</a>-->
-      <!--        <ng-template ngbNavContent>Second content</ng-template>-->
-      <!--      </li>-->
-    </ng-template>
-    <ng-template #loginBlock>
-      <li ngbNavItem>
-        <a ngbNavLink class="navbar-dark bg-dark text-light">Se connecter</a>
-        <ng-template ngbNavContent>
-          <app-login></app-login>
-        </ng-template>
+    <li li class="nav-item">
+      <a class="nav-link text-light" [routerLink]="['/character']">Personnages</a>
+    </li>
+    <li li class="nav-item">
+      <a class="nav-link text-light" [routerLink]="['/underConstruction']">PNJ</a>
+    </li>
+    <div *ngIf="isAdmin; then adminBlock else otherBlock"></div>
+    <ng-template #adminBlock>
+      <li li class="nav-item">
+        <a class="nav-link text-light" [routerLink]="['/admin']">Administration</a>
       </li>
-      <li ngbNavItem>
-        <a ngbNavLink class="navbar-dark bg-dark text-light">S'inscrire</a>
-        <ng-template ngbNavContent>
-          <app-register></app-register>
-        </ng-template>
+      <li li class="nav-item">
+        <a class="nav-link text-light" [routerLink]="['/logoff']">Déconnexion</a>
       </li>
     </ng-template>
-  </ng-template>
-</ul>
-<div [ngbNavOutlet]="nav"></div>
+    <ng-template #otherBlock>
+      <div *ngIf="isUser; then userBlock else loginBlock"></div>
+      <ng-template #userBlock>
+        <li li class="nav-item">
+          <a class="nav-link text-light" [routerLink]="['logoff']">Déconnexion</a>
+        </li>
+
+      </ng-template>
+      <ng-template #loginBlock>
+        <li li class="nav-item">
+          <a class="nav-link text-light" [routerLink]="['/login']">Connexion</a>
+        </li>
+        <li li class="nav-item">
+          <a class="nav-link text-light" [routerLink]="['/register']">Inscription</a>
+        </li>
+      </ng-template>
+    </ng-template>
+  </ul>
+</section>
+
+<div class="bg-home">
+  <h1 class="text-center">Seuls nous combattons, ensemble nous vaincrons</h1>
+</div>

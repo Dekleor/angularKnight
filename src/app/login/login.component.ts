@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { catchError, first } from 'rxjs/operators';
+import {User} from '../models/user';
 
 
 @Component({
@@ -12,33 +13,32 @@ import { catchError, first } from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http: AuthenticationService, private fb: FormBuilder, private router: Router) { }
+  constructor(private http: AuthenticationService, private fb: FormBuilder, private router: Router) {
+  }
 
   loginForm: FormGroup;
   submitted = false;
   loading = false;
   error = '';
-  isLogged = false;
+  user: User;
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
-      password: ['', Validators.required ]
+      password: ['', Validators.required]
     });
   }
 
-  submitForm(): void{
+  submitForm(): void {
     this.submitted = true;
-    if (this.loginForm.valid){
-      this.isLogged = true;
+    if (this.loginForm.valid) {
       const formValues = this.loginForm.value;
-      this.http.login(formValues)
-        .subscribe((res: { token: any; }) => this.http.saveToken(res.token));
-      this.router.navigate(['/home']);
+      this.http.login(formValues).subscribe(res => {
+        this.http.saveToken(res.token);
+        this.router.navigate(['home']);
+      });
       this.loginForm.reset();
       this.submitted = false;
     }
-
   }
-
 }

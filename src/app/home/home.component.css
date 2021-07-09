@@ -1,11 +1,30 @@
+:root {
+  --dark: #343a40;
+}
+
 .bg-top {
   background-image: url(../../assets/backgroundTop.png);
+  background-color: var(--dark);
   background-repeat: no-repeat;
   background-position: center;
   height: 175px;
 }
 
-.menuPosition {
+.bg-top ul {
   position: relative;
-  bottom: 0;
+}
+
+.bg-home {
+  background: url(../../assets/bgHome.jpg), linear-gradient(
+    to top right,
+    rgba(52, 58, 64, 0.7),
+    rgba(52, 58, 64, 0.7) 50%
+  ) no-repeat top;
+  background-size: cover;
+  padding: 248px 0px;
+}
+
+h1 {
+  margin-top: 250px;
+  color: white;
 }

@@ -24,10 +24,4 @@ export class AuthenticationService {
     window.localStorage.setItem(Main.TOKEN_KEY, token);
   }
 
-  // saveIsLogged(isLogged: boolean): void{
-  //   // if a token already exist, delete it
-  //   window.localStorage.removeItem(isLogged);
-  //   // save the new token
-  //   window.localStorage.setItem(Main.TOKEN_KEY, token);
-  // }
 }
