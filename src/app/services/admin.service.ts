@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from '../models/user';
 import {Character} from '../models/character';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +19,11 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   countUsers(): Observable<User[]> {
-    this.numberOfUser = this.http.get<User[]>(this.userRoot);
-    return this.numberOfUser.length;
+    return this.http.get<User[]>(this.userRoot).pipe(map(userCount => userCount['hydra:member']));
   }
 
   countCharacters(): Observable<Character[]> {
-    this.numberOfChar = this.http.get<Character[]>(this.characterRoot);
-    return this.numberOfChar.length;
+    return this.http.get<Character[]>(this.characterRoot).pipe(map(charCount => charCount['hydra:member']));
   }
 
   getCharacters(): Observable<Character[]> {

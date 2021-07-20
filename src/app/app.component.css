@@ -1,1 +1,24 @@
+:root {
+  --dark: #343a40;
+}
 
+.bg-top {
+  background-color: var(--dark);
+  height: 230px;
+  border-bottom: 4px solid white;
+}
+
+.bg-top ul {
+  position: relative;
+  bottom: 0px
+}
+
+.bg-top img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+  background-color: var(--dark);
+}

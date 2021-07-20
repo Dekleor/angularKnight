@@ -1,35 +1,106 @@
-<h3>Ajouter un vol</h3>
-<ul *ngIf="submitted">
-  <li *ngIf="newCharacter.controls['name']?.errors?.required">Vous connaissez bien le nom de votre personnage ?</li>
-  <li *ngIf="newCharacter.controls['background']?.errors?.required">Vous avez bien quelques mots à nous dire sur votre personnage !</li>
-  <li *ngIf="newCharacter.controls['armor']?.errors?.required">Comment ça, "je ne sais pas quelle armure il porte" ?</li>
-</ul>
+  <div *ngIf="token != null">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-outline-light mt-3" data-toggle="modal" data-target="#exampleModalCenter">
+      Ajouter un nouveau personnage
+    </button>
 
-<form [formGroup]="newCharacter" (ngSubmit)="submitForm()">
-  <label>ID</label>
-  <div class="form-group row">
-    <label for="formName">Nom du personnage :</label>
-    <input type="text" formControlName="name" id="formName">
-  </div>
-  <div class="form-group row">
-    <label for="formBackground">son histoire :</label>
-    <textarea type="text" formControlName="departureDate" id="formBackground"></textarea>
-  </div>
-  <div>
-    <label for="formDivision">Sa section :</label>
-    <input type="time" formControlName="division" id="formDivision">
-  </div>
-  <div>
-    <label for="formArmor">Quelle armure porte il ? </label>
-    <input type="text" formControlName="armor" id="formArmor">
-  </div>
-  <div>
-    <label for="formCoatOfArms">Son blason :</label>
-    <input type="text" formControlName="coatOfArms" id="formCoatOfArms">
-  </div>
-  <div>
-    <label for="formPortrait">son portrait :</label>
-    <input type="text" formControlName="portrait" id="formPortrait">
-  </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
 
-</form>
+            <form [formGroup]="addCharaForm" (ngSubmit)="submitForm()">
+              <div class="log">
+
+                <div class="input-group mt-2 mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" for="formName" id="basic-addon1">Nom</span>
+                  </div>
+                  <input type="text" class="form-control" formControlName="name" placeholder="Nom" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" for="formBackground" id="basic-addon2">Background</span>
+                  </div>
+                  <textarea type="text" class="form-control" formControlName="background" placeholder="background" aria-label="background" aria-describedby="basic-addon2"></textarea>
+                </div>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="formDivision" >Section</label>
+                  </div>
+                  <select class="custom-select form-control" formControlName="division" id="formDivision">
+                    <option selected>Section...</option>
+                    <option value="Cyclope">Cyclope</option>
+                    <option value="Dragon">Dragon</option>
+                    <option value="Gargoyles">Gardoyles</option>
+                    <option value="Giant">Giant</option>
+                    <option value="Griffon">Griffon</option>
+                    <option value="Korrigan">Korrigan</option>
+                    <option value="Kraken">Kraken</option>
+                    <option value="Ogre">Ogre</option>
+                    <option value="Tarasque">Tarasque</option>
+                  </select>
+                </div>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="formArmor" >Meta-Armure</label>
+                  </div>
+                  <select class="custom-select form-control" formControlName="armor" id="formArmor">
+                    <option selected>Section...</option>
+                    <option value="Barbarian">Barbarian</option>
+                    <option value="Bard">Bard</option>
+                    <option value="Druid">Druid</option>
+                    <option value="Monk">Monk</option>
+                    <option value="Paladin">Paladin</option>
+                    <option value="Priest">Priest</option>
+                    <option value="Ranger">Ranger</option>
+                    <option value="Rogue">Rogue</option>
+                    <option value="Shaman">Shaman</option>
+                    <option value="Sorcerer">Sorcerer</option>
+                    <option value="Warlock">Warlock</option>
+                    <option value="Warmaster">Warmaster</option>
+                    <option value="Warrior">Warrior</option>
+                    <option value="Wizard">Wizard</option>
+                  </select>
+                </div>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Portrait</span>
+                  </div>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input form-control" formControlName="portrait" id="formPortrait">
+                    <label class="custom-file-label" for="formPortrait" >choisissez un fichier</label>
+                  </div>
+                </div>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Blason</span>
+                  </div>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input form-control" formControlName="coatOfArms" id="formCoatOfArms">
+                    <label class="custom-file-label" for="formCoatOfArms">choisissez un fichier</label>
+                  </div>
+                </div>
+
+                <div class="justify-content-end row p-3">
+                  <input class="w-25 form-control btn btn-outline-dark" type="submit" value="Enregistrer">
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

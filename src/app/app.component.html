@@ -1,1 +1,42 @@
+<section class="bg-top">
+  <img src="../assets/backgroundTop.png" alt="Knight">
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link text-light" [routerLink]="['/home']">Home</a>
+    </li>
+    <li li class="nav-item">
+      <a class="nav-link text-light" [routerLink]="['/character']">Personnages</a>
+    </li>
+    <li li class="nav-item">
+      <a class="nav-link text-light" [routerLink]="['/npc']">PNJ</a>
+    </li>
+    <div *ngIf="isAdmin; then adminBlock else otherBlock"></div>
+    <ng-template #adminBlock>
+      <li li class="nav-item">
+        <a class="nav-link text-light" [routerLink]="['/admin']">Administration</a>
+      </li>
+      <li li class="nav-item">
+        <a class="nav-link text-light" [routerLink]="['/logoff']">Déconnexion</a>
+      </li>
+    </ng-template>
+    <ng-template #otherBlock>
+      <div *ngIf="isUser; then userBlock else loginBlock"></div>
+      <ng-template #userBlock>
+        <li li class="nav-item">
+          <a class="nav-link text-light" [routerLink]="['logoff']">Déconnexion</a>
+        </li>
+
+      </ng-template>
+      <ng-template #loginBlock>
+        <li li class="nav-item">
+          <a class="nav-link text-light" [routerLink]="['/login']">Connexion</a>
+        </li>
+        <li li class="nav-item">
+          <a class="nav-link text-light" [routerLink]="['/register']">Inscription</a>
+        </li>
+      </ng-template>
+    </ng-template>
+  </ul>
+</section>
+
 <router-outlet></router-outlet>

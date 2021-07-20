@@ -7,6 +7,7 @@ import {Character} from '../../models/character';
   styleUrls: ['./character.component.css']
 })
 export class CharacterComponent implements OnInit {
+  public isCollapsed = true;
 
   constructor() { }
 

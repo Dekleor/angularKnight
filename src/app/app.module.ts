@@ -10,12 +10,12 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { AddComponent } from './character/add/add.component';
-import { DetailComponent } from './character/detail/detail.component';
 import { ListComponent } from './character/list/list.component';
 import { CharacterComponent } from './character/character/character.component';
 import { DeleteComponent } from './admin/delete/delete.component';
 import { StatsComponent } from './admin/stats/stats.component';
-import { AccueilComponent } from './home/accueil/accueil.component';
+import { NpcComponent } from './npc/npc.component';
+import { LogoffComponent } from './logoff/logoff.component';
 
 @NgModule({
   declarations: [
@@ -24,12 +24,12 @@ import { AccueilComponent } from './home/accueil/accueil.component';
     HomeComponent,
     RegisterComponent,
     AddComponent,
-    DetailComponent,
     ListComponent,
     CharacterComponent,
     DeleteComponent,
     StatsComponent,
-    AccueilComponent
+    NpcComponent,
+    LogoffComponent
   ],
   imports: [
     BrowserModule,

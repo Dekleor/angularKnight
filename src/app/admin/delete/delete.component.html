@@ -1,1 +1,6 @@
-<p>delete works!</p>
+<ul class="d-flex justify-content-between mt-4">
+  <app-character *ngFor=" let character of allCharacters" [character]=character>
+    <button (click)="deleteCharacter()" class="btn btn-secondary btn-sm">Supprimer ce personnage</button>
+  </app-character>
+</ul>
+

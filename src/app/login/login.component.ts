@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       const formValues = this.loginForm.value;
       this.http.login(formValues).subscribe(res => {
         this.http.saveToken(res.token);
-        this.router.navigate(['home']);
+        this.router.navigate(['home']).then(() => window.location.reload() );
       });
       this.loginForm.reset();
       this.submitted = false;

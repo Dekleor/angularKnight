@@ -11,19 +11,27 @@ import {AdminService} from '../../services/admin.service';
 export class StatsComponent implements OnInit {
 
   constructor(private http: AdminService) { }
-
   allUsers: User[];
   allCharacters: Character[];
-
-  ngOnInit(): void {
-  }
+  nbUser: number;
+  nbChar: number;
+  isCollapsed = false;
 
   countUsers(): void {
-    this.http.countUsers().subscribe(foo => this.allUsers = foo);
+    this.http.countUsers().subscribe(userRes => { this.allUsers = userRes; this.nbUser = userRes.length; });
   }
 
   countCharacters(): void {
-    this.http.countCharacters().subscribe(foo => this.allCharacters = foo);
+    this.http.countCharacters().subscribe(charaRes => { this.allCharacters = charaRes; this.nbChar = charaRes.length; });
   }
+
+  ngOnInit(): void {
+    this.countUsers();
+    this.countCharacters();
+  }
+
+
+
+
 
 }

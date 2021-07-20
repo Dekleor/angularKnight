@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CharacterService} from '../../services/character.service';
+import {Character} from '../../models/character';
+import {Router} from '@angular/router';
+import {Main} from '../../../main';
 
 @Component({
   selector: 'app-add',
@@ -8,30 +11,36 @@ import {CharacterService} from '../../services/character.service';
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
-
-  newCharacter: FormGroup;
+  addCharaForm: FormGroup;
+  character: Character;
   submitted = false;
+  loading = false;
+  error = '';
 
-  constructor(private fb: FormBuilder, private http: CharacterService) { }
+  constructor(private fb: FormBuilder, private http: CharacterService, private router: Router) { }
+  token = window.localStorage.getItem(Main.TOKEN_KEY);
+
 
   ngOnInit(): void {
-    this.newCharacter = this.fb.group( {
-      name: [Validators.required],
-      background: [Validators.required],
-      coatOfArms: [],
-      portrait: [],
-      division: [],
-      armor: [Validators.required],
-      });
+    this.addCharaForm = this.fb.group({
+      name: ['', Validators.required],
+      background: ['', Validators.required],
+      division: ['', Validators.required],
+      armor: ['', Validators.required],
+      portrait: ['', Validators.required],
+      coatOfArms: ['', Validators.required],
+    });
   }
 
   submitForm(): void {
     this.submitted = true;
-    if (this.newCharacter.valid) {
+    if (this.addCharaForm.valid) {
+      const formValues = this.addCharaForm.value;
+      this.http.add(formValues).subscribe(res => {
+        this.router.navigate(['character']).then(() => window.location.reload() );
+      });
+      this.addCharaForm.reset();
       this.submitted = false;
-      const formValues = this.newCharacter.value;
-      this.http.add(formValues).subscribe();
-      this.newCharacter.reset();
     }
   }
 

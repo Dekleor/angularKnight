@@ -1,6 +1,8 @@
-<div class="container bg-dark">
-
-  <ul>
+<div class="container">
+  <ul class="d-flex justify-content-between mt-4">
     <app-character *ngFor=" let character of allCharacters" [character]=character></app-character>
   </ul>
+
+<app-add></app-add>
+
 </div>

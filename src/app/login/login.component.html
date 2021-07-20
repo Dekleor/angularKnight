@@ -4,23 +4,25 @@
     <br>
     <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
       <div class="log">
-        <div class="row">
-          <div class="my-3 p-3">
-            <label for="formUsername">Nom d'utilisateur : </label>
-            <input type="text" formControlName="username" id="formUsername" placeholder="Nom d'utilisateur">
+
+        <div class="input-group mt-2 mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" for="formUsername" id="basic-addon1">Nom d'utilisateur</span>
           </div>
+          <input type="text" class="form-control" formControlName="username" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
         </div>
-        <div class="row justify-content-center pt-4">
-          <div class=" mt-4">
-            <label for="formPassword">Mot de passe : </label>
-            <input type="text" formControlName="password" id="formPassword" placeholder="Mot de passe">
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" for="formPassword" id="basic-addon2">Mot de passe</span>
           </div>
+          <input type="password" class="form-control" formControlName="password" placeholder="password" aria-label="password" aria-describedby="basic-addon1">
         </div>
-      </div>
-      <div class="row pt-5">
-        <input class="form-control btn btn-success" type="submit" value="Se connecter" style="border-radius: 30px; ">
+
+        <div class="justify-content-center row pt-3">
+          <input class="w-25 form-control btn btn-outline-light" type="submit" value="Se connecter">
+        </div>
       </div>
     </form>
   </div>
 </div>
-

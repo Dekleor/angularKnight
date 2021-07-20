@@ -11,10 +11,12 @@ import {Character} from '../../models/character';
 })
 export class DeleteComponent implements OnInit {
 
-  user: User;
-  character: Character;
 
   constructor(private http: AdminService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  user: User;
+  character: Character;
+  allUsers: User[];
+  allCharacters: Character[];
 
   deleteUser() {
     return this.http.deleteUser(this.user.id).subscribe(s => this.router.navigateByUrl('/admin'));
@@ -22,6 +24,14 @@ export class DeleteComponent implements OnInit {
 
   deleteCharacter() {
     return this.http.deleteCharacter(this.character.id).subscribe(s => this.router.navigateByUrl('/admin'));
+  }
+
+  getCharacters(): void {
+    this.http.getCharacters().subscribe(foo => { this.allCharacters = foo; } );
+  }
+
+  getUsers(): void {
+    this.http.getUsers().subscribe(foo => { this.allUsers = foo; } );
   }
 
   ngOnInit(): void {
